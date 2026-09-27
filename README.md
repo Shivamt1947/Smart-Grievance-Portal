@@ -206,3 +206,5 @@ Navigate your browser to: **`http://localhost:5173`**
    Serve `client/dist` statically and proxy `/api` and `/uploads` requests to the Node.js server.
 3. **Environment**:
    Set `NODE_ENV=production`, configure a strong `SESSION_SECRET`, provide a cloud `MONGODB_URI` (MongoDB Atlas), and configure Cloudinary credentials for cloud file storage.
+#   S m a r t - G r i e v a n c e - P o r t a l  
+ 

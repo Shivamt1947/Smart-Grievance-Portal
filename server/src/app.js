@@ -26,6 +26,12 @@ import { notFound, errorHandler } from './middleware/errorHandler.js';
 export const createApp = (mongoUri) => {
   const app = express();
 
+  // Render terminates TLS at its reverse proxy, so Express must trust its
+  // forwarded protocol before issuing secure production session cookies.
+  if (process.env.NODE_ENV === 'production') {
+    app.set('trust proxy', 1);
+  }
+
   // Security Headers
   app.use(
     helmet({

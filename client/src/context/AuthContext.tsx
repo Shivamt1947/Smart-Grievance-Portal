@@ -12,6 +12,7 @@ interface AuthContextType {
 }
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
+const SESSION_RESTORE_TIMEOUT_MS = 10_000;
 
 export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [user, setUser] = useState<User | null>(null);
@@ -19,7 +20,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
 
   const refreshUser = async () => {
     try {
-      const response = await api.get('/auth/me');
+      const response = await api.get('/auth/me', { timeout: SESSION_RESTORE_TIMEOUT_MS });
       if (response.data.success && response.data.user) {
         setUser(response.data.user);
       } else {

@@ -1,0 +1,19 @@
+{
+  "name": "smart-grievance-portal",
+  "version": "1.0.0",
+  "description": "Production-style Full-Stack Smart Grievance Portal with AI, 48h SLA Escalation, and Multi-Role RBAC",
+  "private": true,
+  "scripts": {
+    "start": "concurrently -n \"SERVER,CLIENT\" -c \"blue,green\" \"npm --prefix server run start\" \"npm --prefix client run dev\"",
+    "dev": "concurrently -n \"SERVER,CLIENT\" -c \"blue,green\" \"npm --prefix server run dev\" \"npm --prefix client run dev\"",
+    "server": "npm --prefix server run start",
+    "server:dev": "npm --prefix server run dev",
+    "client": "npm --prefix client run dev",
+    "seed": "npm --prefix server run seed",
+    "test": "npm --prefix server run test",
+    "build": "npm --prefix client run build"
+  },
+  "dependencies": {
+    "concurrently": "^9.1.2"
+  }
+}
